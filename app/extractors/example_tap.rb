@@ -1,0 +1,20 @@
+class ExampleTap < Extractor::Tap
+
+  # Value counts up from 1 by default
+  # Customize defining first_value and next_value methods
+  def request_for value
+    Typhoeus.get "https://jsonplaceholder.typicode.com/posts/#{value}"
+  end
+
+  # Use response.json for a parsed body (nil if invalid json)
+  # Return anything other than nil or false if reached the end
+  def reached_end? response
+    response.body == "{}"
+  end
+
+  # Return nil, false or explode this method on invalid response
+  def validate response
+    Integer(response.json['id'])
+  end
+
+end

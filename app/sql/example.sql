@@ -1,0 +1,5 @@
+
+select
+    response_options -> 'response_body' body
+from <%= source 'requests' %>
+where extractor_class = 'ExampleTap'

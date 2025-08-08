@@ -61,3 +61,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "typhoeus"
+gem "safra", github: "felipedmesquita/extractor", branch: "safra"
